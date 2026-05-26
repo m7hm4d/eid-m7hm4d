@@ -1194,58 +1194,27 @@ h1::after {
 }
 
 .share-icon {
-  position: relative;
-  display: inline-block;
+  display: block;
   width: 25px;
-  height: 20px;
+  height: 25px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.35;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  overflow: visible;
+  filter: drop-shadow(0 0 10px rgba(255, 237, 179, 0.34));
 }
 
-.share-icon::before,
-.share-icon::after {
-  content: "";
-  position: absolute;
-  right: 6px;
-  width: 14px;
-  height: 2px;
-  border-radius: 999px;
-  background: currentColor;
-  opacity: 0.82;
-  transform-origin: right center;
+.share-arrow,
+.share-tray {
+  vector-effect: non-scaling-stroke;
 }
 
-.share-icon::before {
-  top: 5px;
-  transform: rotate(24deg);
-}
-
-.share-icon::after {
-  bottom: 5px;
-  transform: rotate(-24deg);
-}
-
-.share-icon span {
-  position: absolute;
-  width: 7px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: currentColor;
-  box-shadow: 0 0 10px rgba(255, 237, 179, 0.38);
-}
-
-.share-icon span:nth-child(1) {
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.share-icon span:nth-child(2) {
-  left: 0;
-  top: 0;
-}
-
-.share-icon span:nth-child(3) {
-  left: 0;
-  bottom: 0;
+.share-button:hover .share-arrow,
+.share-button:focus-visible .share-arrow,
+.share-button.is-shared .share-arrow {
+  animation: shareArrowLift 0.72s var(--ease) both;
 }
 
 .signature {
@@ -1381,16 +1350,8 @@ h1::after {
     shareButtonGlow 3s ease-in-out 2.2s infinite;
 }
 
-.eid-page.is-open .share-icon span {
-  animation: shareDotPulse 2.1s ease-in-out 2.1s infinite;
-}
-
-.eid-page.is-open .share-icon span:nth-child(2) {
-  animation-delay: 2.24s;
-}
-
-.eid-page.is-open .share-icon span:nth-child(3) {
-  animation-delay: 2.38s;
+.eid-page.is-open .share-icon {
+  animation: shareIconFloat 2.8s ease-in-out 2.1s infinite;
 }
 
 .eid-page.is-open .share-button.is-shared {
@@ -1775,16 +1736,27 @@ h1::after {
   }
 }
 
-@keyframes shareDotPulse {
+@keyframes shareIconFloat {
   0%,
   100% {
-    opacity: 0.9;
-    box-shadow: 0 0 10px rgba(255, 237, 179, 0.38);
+    transform: translateY(0);
+    filter: drop-shadow(0 0 10px rgba(255, 237, 179, 0.34));
   }
 
   50% {
-    opacity: 1;
-    box-shadow: 0 0 16px rgba(255, 237, 179, 0.66);
+    transform: translateY(-2px);
+    filter: drop-shadow(0 0 16px rgba(255, 237, 179, 0.64));
+  }
+}
+
+@keyframes shareArrowLift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  44% {
+    transform: translateY(-2px);
   }
 }
 
@@ -2281,11 +2253,8 @@ h1::after {
 
   .share-icon {
     width: 21px;
-    height: 17px;
-  }
-
-  .share-icon span {
-    width: 6px;
+    height: 21px;
+    stroke-width: 2.45;
   }
 
   .message-kicker {
