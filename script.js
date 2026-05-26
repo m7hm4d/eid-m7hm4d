@@ -226,8 +226,7 @@ async function copyShareLink() {
 
 async function shareGreeting() {
   const shareData = {
-    title: "تهنئة عيد الأضحى المبارك",
-    text: "كل عام وأنتم بخير بمناسبة عيد الأضحى المبارك",
+    title: "تهنئة عيد الاضحى المبارك",
     url: publicShareUrl
   };
 
