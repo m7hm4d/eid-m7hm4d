@@ -10,7 +10,7 @@ const shareButton = document.querySelector("#shareButton");
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const publicShareUrl = "https://m7hm4d.github.io/eid-m7hm4d/";
+const publicShareUrl = "https://m7hm4d.github.io/eid-m7hm4d/?v=3";
 const greetingTitle = "كل عام وأنتم بخير";
 const greetingLines = [
   "بمناسبة عيد الأضحى المبارك",
