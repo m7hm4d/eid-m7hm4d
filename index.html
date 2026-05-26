@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="بطاقة تهنئة تفاعلية بمناسبة عيد الأضحى المبارك مع آية قرآنية وحركة فتح هدية."
+    />
+    <title>تهنئة عيد الأضحى المبارك</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="eid-page" id="eidPage">
+      <div class="scene" aria-hidden="true">
+        <span class="moon"></span>
+        <span class="sun"></span>
+        <span class="star star-one"></span>
+        <span class="star star-two"></span>
+        <span class="star star-three"></span>
+        <span class="star-field"></span>
+
+        <span class="cloud cloud-one"></span>
+        <span class="cloud cloud-two"></span>
+        <span class="cloud cloud-three"></span>
+
+        <span class="lantern lantern-right">
+          <span class="lantern-top"></span>
+          <span class="lantern-glass"></span>
+          <span class="lantern-bottom"></span>
+        </span>
+
+        <span class="eid-arch"></span>
+        <span class="ground-glow"></span>
+
+        <span class="sheep sheep-left">
+          <span class="sheep-body"></span>
+          <span class="sheep-head">
+            <span class="sheep-eye"></span>
+          </span>
+          <span class="sheep-leg sheep-leg-one"></span>
+          <span class="sheep-leg sheep-leg-two"></span>
+        </span>
+
+        <span class="sheep sheep-right">
+          <span class="sheep-body"></span>
+          <span class="sheep-head">
+            <span class="sheep-eye"></span>
+          </span>
+          <span class="sheep-leg sheep-leg-one"></span>
+          <span class="sheep-leg sheep-leg-two"></span>
+        </span>
+
+        <span class="chocolate chocolate-one">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+
+        <span class="chocolate chocolate-two">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </div>
+
+      <button
+        class="lantern lantern-left lantern-toggle"
+        id="lightToggle"
+        type="button"
+        aria-label="تبديل الخلفية بين الليل والنهار"
+        aria-pressed="false"
+      >
+        <span class="lantern-top"></span>
+        <span class="lantern-glass"></span>
+        <span class="lantern-bottom"></span>
+      </button>
+
+      <div class="confetti-layer" id="confettiLayer" aria-hidden="true"></div>
+
+      <section class="gift-stage" aria-label="هدية التهنئة">
+        <p class="occasion">عيد الأضحى المبارك</p>
+
+        <button
+          class="gift-button"
+          id="giftButton"
+          type="button"
+          aria-controls="celebration"
+          aria-expanded="false"
+          aria-label="افتح هدية تهنئة عيد الأضحى"
+        >
+          <span class="gift-aura"></span>
+          <span class="gift-light"></span>
+          <span class="gift-lid">
+            <span class="gift-bow gift-bow-left"></span>
+            <span class="gift-bow gift-bow-right"></span>
+            <span class="gift-ribbon-top"></span>
+          </span>
+          <span class="gift-box">
+            <span class="gift-ribbon"></span>
+          </span>
+          <span class="gift-tag">افتح الهدية</span>
+        </button>
+      </section>
+
+      <section class="celebration" id="celebration" aria-live="polite">
+        <div class="message">
+          <span class="message-kicker">تهنئة من القلب</span>
+          <h1 id="mainGreeting"></h1>
+          <p class="typed-lines" id="typedLines"></p>
+        </div>
+
+        <figure class="verse-block">
+          <blockquote>
+            ﴿ذَٰلِكَ وَمَن يُعَظِّمْ شَعَـٰٓئِرَ ٱللَّهِ فَإِنَّهَا مِن تَقْوَى ٱلْقُلُوبِ﴾
+          </blockquote>
+          <figcaption>سورة الحج: ٣٢</figcaption>
+        </figure>
+
+        <div class="blessing-row" aria-label="عبارات تهنئة إضافية">
+          <span>أضحى مبارك</span>
+          <span>فرح دائم</span>
+          <span>قبول وبركة</span>
+        </div>
+
+        <a
+          class="signature"
+          href="https://instagram.com/m7hm4d"
+          aria-label="زيارة حساب m7hm4d على Instagram"
+        >
+          m7hm4d
+        </a>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
