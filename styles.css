@@ -12,8 +12,27 @@
   --paper: #fffaf0;
   --shadow: rgba(4, 18, 24, 0.34);
   --moon-mask: #8f2537;
+  --theme-text: #fff8ed;
+  --theme-muted: #fff8ed;
+  --theme-accent: #fff8ed;
+  --theme-hover-text: #fff8ed;
+  --theme-chip-border: rgba(255, 248, 237, 0.24);
+  --theme-chip-bg: rgba(255, 248, 237, 0.1);
+  --theme-share-border: rgba(255, 248, 237, 0.3);
+  --theme-share-bg: linear-gradient(135deg, rgba(255, 248, 237, 0.18), rgba(242, 198, 91, 0.16)),
+    rgba(255, 248, 237, 0.08);
+  --theme-focus: rgba(255, 237, 179, 0.75);
   --text-shadow-soft: 0 3px 12px rgba(28, 7, 20, 0.32), 0 0 18px rgba(255, 237, 179, 0.18);
   --text-shadow-strong: 0 5px 18px rgba(28, 7, 20, 0.48), 0 0 34px rgba(255, 237, 179, 0.28);
+  --heading-text-shadow: 0 6px 0 rgba(68, 17, 37, 0.2), 0 12px 34px rgba(28, 7, 20, 0.5),
+    0 0 42px rgba(255, 237, 179, 0.22);
+  --heading-glow-shadow: 0 6px 0 rgba(68, 17, 37, 0.22), 0 13px 36px rgba(28, 7, 20, 0.54),
+    0 0 48px rgba(255, 237, 179, 0.56), 0 0 18px rgba(34, 196, 175, 0.35);
+  --signature-color: rgba(255, 248, 237, 0.72);
+  --signature-bright: #fff8ed;
+  --signature-shadow: 0 3px 10px rgba(28, 7, 20, 0.38), 0 0 12px rgba(255, 248, 237, 0.18);
+  --signature-bright-shadow: 0 4px 12px rgba(28, 7, 20, 0.4), 0 0 18px rgba(255, 237, 179, 0.44),
+    0 0 7px rgba(255, 248, 237, 0.24);
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -66,6 +85,26 @@ body {
 }
 
 body.is-day {
+  --theme-text: #1b1114;
+  --theme-muted: #2a171b;
+  --theme-accent: #201215;
+  --theme-hover-text: #130c0e;
+  --theme-chip-border: rgba(36, 20, 22, 0.28);
+  --theme-chip-bg: rgba(255, 248, 237, 0.18);
+  --theme-share-border: rgba(36, 20, 22, 0.34);
+  --theme-share-bg: linear-gradient(135deg, rgba(255, 248, 237, 0.32), rgba(255, 220, 147, 0.22)),
+    rgba(255, 248, 237, 0.18);
+  --theme-focus: rgba(36, 20, 22, 0.55);
+  --text-shadow-soft: 0 2px 8px rgba(255, 248, 237, 0.38), 0 8px 18px rgba(92, 43, 40, 0.2);
+  --text-shadow-strong: 0 3px 10px rgba(255, 248, 237, 0.42), 0 10px 24px rgba(92, 43, 40, 0.24);
+  --heading-text-shadow: 0 2px 0 rgba(255, 248, 237, 0.22), 0 12px 26px rgba(92, 43, 40, 0.28),
+    0 0 26px rgba(255, 248, 237, 0.18);
+  --heading-glow-shadow: 0 2px 0 rgba(255, 248, 237, 0.28), 0 14px 30px rgba(92, 43, 40, 0.32),
+    0 0 36px rgba(255, 248, 237, 0.32);
+  --signature-color: rgba(27, 17, 20, 0.74);
+  --signature-bright: #130c0e;
+  --signature-shadow: 0 2px 8px rgba(255, 248, 237, 0.28), 0 8px 16px rgba(92, 43, 40, 0.18);
+  --signature-bright-shadow: 0 2px 10px rgba(255, 248, 237, 0.36), 0 10px 20px rgba(92, 43, 40, 0.22);
   background:
     radial-gradient(circle at 78% 13%, rgba(255, 244, 181, 0.58), transparent 29%),
     radial-gradient(circle at 18% 82%, rgba(214, 77, 103, 0.22), transparent 34%),
@@ -781,12 +820,15 @@ body.is-day .lantern-toggle .lantern-glass {
 
 .occasion {
   margin: 0 0 clamp(18px, 4vh, 34px);
-  color: #ffedb3;
+  color: var(--theme-accent);
   font-size: clamp(1.15rem, 3vw, 2rem);
   font-weight: 800;
   text-align: center;
   text-shadow: var(--text-shadow-soft);
   animation: introTextFloat 3s ease-in-out infinite;
+  transition:
+    color 0.9s var(--ease),
+    text-shadow 0.9s var(--ease);
 }
 
 .gift-button {
@@ -1005,10 +1047,13 @@ body.is-day .lantern-toggle .lantern-glass {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: #ffedb3;
+  color: var(--theme-accent);
   font-size: clamp(1rem, 2vw, 1.2rem);
   font-weight: 800;
   text-shadow: var(--text-shadow-soft);
+  transition:
+    color 0.9s var(--ease),
+    text-shadow 0.9s var(--ease);
 }
 
 .message-kicker::before,
@@ -1025,15 +1070,15 @@ h1 {
   position: relative;
   min-height: 2.1em;
   margin: 12px 0 12px;
-  color: #ffffff;
+  color: var(--theme-text);
   font-size: clamp(2.35rem, 5.2vw, 4.8rem);
   line-height: 1.05;
   letter-spacing: 0;
   text-wrap: balance;
-  text-shadow:
-    0 6px 0 rgba(68, 17, 37, 0.2),
-    0 12px 34px rgba(28, 7, 20, 0.5),
-    0 0 42px rgba(255, 237, 179, 0.22);
+  text-shadow: var(--heading-text-shadow);
+  transition:
+    color 0.9s var(--ease),
+    text-shadow 0.9s var(--ease);
 }
 
 h1::after {
@@ -1050,12 +1095,15 @@ h1::after {
 .typed-lines {
   min-height: 4.3em;
   margin: 0;
-  color: var(--muted);
+  color: var(--theme-muted);
   font-size: clamp(1.15rem, 2.3vw, 1.6rem);
   line-height: 1.9;
   white-space: pre-line;
   text-wrap: pretty;
   text-shadow: var(--text-shadow-soft);
+  transition:
+    color 0.9s var(--ease),
+    text-shadow 0.9s var(--ease);
 }
 
 .typing-caret::after {
@@ -1065,8 +1113,9 @@ h1::after {
   height: 1em;
   margin-inline-start: 0.12em;
   vertical-align: -0.12em;
-  background: #ffedb3;
+  background: var(--theme-accent);
   animation: blink 0.9s steps(2, start) infinite;
+  transition: background 0.9s var(--ease);
 }
 
 .verse-block {
@@ -1138,17 +1187,22 @@ h1::after {
   display: inline-flex;
   min-height: 40px;
   align-items: center;
-  border: 1px solid rgba(255, 248, 237, 0.24);
+  border: 1px solid var(--theme-chip-border);
   border-radius: 999px;
   padding: 8px 18px;
-  color: #fff8ed;
-  background: rgba(255, 248, 237, 0.1);
+  color: var(--theme-text);
+  background: var(--theme-chip-bg);
   font-weight: 800;
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.12),
     0 10px 24px rgba(28, 7, 20, 0.24),
     0 0 14px rgba(255, 237, 179, 0.12);
   text-shadow: var(--text-shadow-soft);
+  transition:
+    color 0.9s var(--ease),
+    border-color 0.9s var(--ease),
+    background 0.9s var(--ease),
+    text-shadow 0.9s var(--ease);
 }
 
 .share-button {
@@ -1158,13 +1212,11 @@ h1::after {
   place-items: center;
   width: 42px;
   height: 42px;
-  border: 1px solid rgba(255, 248, 237, 0.3);
+  border: 1px solid var(--theme-share-border);
   border-radius: 50%;
   padding: 0;
-  color: #fff8ed;
-  background:
-    linear-gradient(135deg, rgba(255, 248, 237, 0.18), rgba(242, 198, 91, 0.16)),
-    rgba(255, 248, 237, 0.08);
+  color: var(--theme-text);
+  background: var(--theme-share-bg);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.14),
     0 12px 28px rgba(28, 7, 20, 0.26),
@@ -1172,16 +1224,17 @@ h1::after {
   cursor: pointer;
   transform: translateY(8px) scale(0.96);
   transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    color 0.2s ease;
+    border-color 0.9s var(--ease),
+    background 0.9s var(--ease),
+    box-shadow 0.9s var(--ease),
+    color 0.9s var(--ease);
 }
 
 .share-button:hover,
 .share-button:focus-visible,
 .share-button.is-shared {
   border-color: rgba(255, 237, 179, 0.68);
-  color: #ffedb3;
+  color: var(--theme-hover-text);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.18),
     0 14px 30px rgba(28, 7, 20, 0.28),
@@ -1189,7 +1242,7 @@ h1::after {
 }
 
 .share-button:focus-visible {
-  outline: 3px solid rgba(255, 237, 179, 0.75);
+  outline: 3px solid var(--theme-focus);
   outline-offset: 4px;
 }
 
@@ -1221,21 +1274,21 @@ h1::after {
   grid-column: 1 / -1;
   justify-self: center;
   margin: 0;
-  color: rgba(255, 248, 237, 0.72);
+  color: var(--signature-color);
   font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
   font-size: clamp(0.8rem, 1.8vw, 0.95rem);
   letter-spacing: 0.08em;
   text-decoration: none;
-  text-shadow: 0 3px 10px rgba(28, 7, 20, 0.38), 0 0 12px rgba(255, 248, 237, 0.18);
+  text-shadow: var(--signature-shadow);
   transition:
-    color 0.2s ease,
-    text-shadow 0.2s ease;
+    color 0.9s var(--ease),
+    text-shadow 0.9s var(--ease);
 }
 
 .signature:hover,
 .signature:focus-visible {
-  color: #fff8ed;
-  text-shadow: 0 0 18px rgba(255, 237, 179, 0.5);
+  color: var(--signature-bright);
+  text-shadow: var(--signature-bright-shadow);
 }
 
 .eid-page.is-open .gift-stage {
@@ -1564,28 +1617,18 @@ h1::after {
   }
 
   50% {
-    text-shadow:
-      0 4px 14px rgba(28, 7, 20, 0.34),
-      0 0 24px rgba(255, 237, 179, 0.4),
-      0 0 10px rgba(255, 248, 237, 0.22);
+    text-shadow: var(--text-shadow-strong);
   }
 }
 
 @keyframes greetingGlow {
   0%,
   100% {
-    text-shadow:
-      0 6px 0 rgba(68, 17, 37, 0.2),
-      0 12px 34px rgba(28, 7, 20, 0.5),
-      0 0 34px rgba(255, 237, 179, 0.22);
+    text-shadow: var(--heading-text-shadow);
   }
 
   50% {
-    text-shadow:
-      0 6px 0 rgba(68, 17, 37, 0.22),
-      0 13px 36px rgba(28, 7, 20, 0.54),
-      0 0 48px rgba(255, 237, 179, 0.56),
-      0 0 18px rgba(34, 196, 175, 0.35);
+    text-shadow: var(--heading-glow-shadow);
   }
 }
 
@@ -1620,26 +1663,20 @@ h1::after {
   }
 
   50% {
-    text-shadow:
-      0 4px 14px rgba(28, 7, 20, 0.34),
-      0 0 20px rgba(255, 237, 179, 0.46),
-      0 0 8px rgba(255, 248, 237, 0.22);
+    text-shadow: var(--text-shadow-strong);
   }
 }
 
 @keyframes signatureGlow {
   0%,
   100% {
-    color: rgba(255, 248, 237, 0.72);
-    text-shadow: 0 3px 10px rgba(28, 7, 20, 0.38), 0 0 12px rgba(255, 248, 237, 0.18);
+    color: var(--signature-color);
+    text-shadow: var(--signature-shadow);
   }
 
   50% {
-    color: #fff8ed;
-    text-shadow:
-      0 4px 12px rgba(28, 7, 20, 0.4),
-      0 0 18px rgba(255, 237, 179, 0.44),
-      0 0 7px rgba(255, 248, 237, 0.24);
+    color: var(--signature-bright);
+    text-shadow: var(--signature-bright-shadow);
   }
 }
 
