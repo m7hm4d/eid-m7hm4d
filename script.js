@@ -6,9 +6,11 @@ const confettiLayer = document.querySelector("#confettiLayer");
 const lightToggle = document.querySelector("#lightToggle");
 const sheepElements = document.querySelectorAll(".sheep");
 const chocolateElements = document.querySelectorAll(".chocolate");
+const shareButton = document.querySelector("#shareButton");
 
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+const publicShareUrl = "https://m7hm4d.github.io/eid-m7hm4d/";
 const greetingTitle = "كل عام وأنتم بخير";
 const greetingLines = [
   "بمناسبة عيد الأضحى المبارك",
@@ -203,9 +205,49 @@ function handleChocolateClick(event) {
   }
 }
 
+function setShareFeedback(label) {
+  shareButton.setAttribute("aria-label", label);
+  shareButton.classList.add("is-shared");
+
+  window.setTimeout(() => {
+    shareButton.setAttribute("aria-label", "مشاركة بطاقة التهنئة");
+    shareButton.classList.remove("is-shared");
+  }, 1800);
+}
+
+async function copyShareLink() {
+  try {
+    await navigator.clipboard.writeText(publicShareUrl);
+    setShareFeedback("تم نسخ رابط التهنئة");
+  } catch {
+    window.prompt("انسخ رابط التهنئة", publicShareUrl);
+  }
+}
+
+async function shareGreeting() {
+  const shareData = {
+    title: "تهنئة عيد الأضحى المبارك",
+    text: "كل عام وأنتم بخير بمناسبة عيد الأضحى المبارك",
+    url: publicShareUrl
+  };
+
+  if (navigator.share) {
+    try {
+      await navigator.share(shareData);
+      setShareFeedback("تمت مشاركة بطاقة التهنئة");
+      return;
+    } catch (error) {
+      if (error.name === "AbortError") return;
+    }
+  }
+
+  await copyShareLink();
+}
+
 setLightMode(false);
 restartLightCycle();
 giftButton.addEventListener("click", openGift);
 lightToggle.addEventListener("click", toggleLightMode);
+shareButton.addEventListener("click", shareGreeting);
 document.addEventListener("click", handleSheepClick);
 document.addEventListener("pointerdown", handleChocolateClick);

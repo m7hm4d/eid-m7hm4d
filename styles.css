@@ -1151,6 +1151,103 @@ h1::after {
   text-shadow: var(--text-shadow-soft);
 }
 
+.share-button {
+  grid-column: 1 / -1;
+  justify-self: center;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 248, 237, 0.3);
+  border-radius: 50%;
+  padding: 0;
+  color: #fff8ed;
+  background:
+    linear-gradient(135deg, rgba(255, 248, 237, 0.18), rgba(242, 198, 91, 0.16)),
+    rgba(255, 248, 237, 0.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 12px 28px rgba(28, 7, 20, 0.26),
+    0 0 20px rgba(255, 237, 179, 0.16);
+  cursor: pointer;
+  transform: translateY(8px) scale(0.96);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease;
+}
+
+.share-button:hover,
+.share-button:focus-visible,
+.share-button.is-shared {
+  border-color: rgba(255, 237, 179, 0.68);
+  color: #ffedb3;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 14px 30px rgba(28, 7, 20, 0.28),
+    0 0 28px rgba(255, 237, 179, 0.28);
+}
+
+.share-button:focus-visible {
+  outline: 3px solid rgba(255, 237, 179, 0.75);
+  outline-offset: 4px;
+}
+
+.share-icon {
+  position: relative;
+  display: inline-block;
+  width: 25px;
+  height: 20px;
+}
+
+.share-icon::before,
+.share-icon::after {
+  content: "";
+  position: absolute;
+  right: 6px;
+  width: 14px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0.82;
+  transform-origin: right center;
+}
+
+.share-icon::before {
+  top: 5px;
+  transform: rotate(24deg);
+}
+
+.share-icon::after {
+  bottom: 5px;
+  transform: rotate(-24deg);
+}
+
+.share-icon span {
+  position: absolute;
+  width: 7px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 10px rgba(255, 237, 179, 0.38);
+}
+
+.share-icon span:nth-child(1) {
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.share-icon span:nth-child(2) {
+  left: 0;
+  top: 0;
+}
+
+.share-icon span:nth-child(3) {
+  left: 0;
+  bottom: 0;
+}
+
 .signature {
   grid-column: 1 / -1;
   justify-self: center;
@@ -1276,6 +1373,28 @@ h1::after {
 
 .eid-page.is-open .blessing-row span:nth-child(3) {
   animation-delay: 1.45s;
+}
+
+.eid-page.is-open .share-button {
+  animation:
+    shareButtonPop 0.72s var(--ease) 1.55s both,
+    shareButtonGlow 3s ease-in-out 2.2s infinite;
+}
+
+.eid-page.is-open .share-icon span {
+  animation: shareDotPulse 2.1s ease-in-out 2.1s infinite;
+}
+
+.eid-page.is-open .share-icon span:nth-child(2) {
+  animation-delay: 2.24s;
+}
+
+.eid-page.is-open .share-icon span:nth-child(3) {
+  animation-delay: 2.38s;
+}
+
+.eid-page.is-open .share-button.is-shared {
+  animation: shareConfirm 0.48s var(--ease) both;
 }
 
 .eid-page.is-open .signature {
@@ -1618,6 +1737,67 @@ h1::after {
 
   100% {
     opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes shareButtonPop {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.86);
+  }
+
+  68% {
+    opacity: 1;
+    transform: translateY(-3px) scale(1.05);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes shareButtonGlow {
+  0%,
+  100% {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.14),
+      0 12px 28px rgba(28, 7, 20, 0.26),
+      0 0 20px rgba(255, 237, 179, 0.16);
+  }
+
+  50% {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.2),
+      0 15px 32px rgba(28, 7, 20, 0.3),
+      0 0 34px rgba(255, 237, 179, 0.36);
+  }
+}
+
+@keyframes shareDotPulse {
+  0%,
+  100% {
+    opacity: 0.9;
+    box-shadow: 0 0 10px rgba(255, 237, 179, 0.38);
+  }
+
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 16px rgba(255, 237, 179, 0.66);
+  }
+}
+
+@keyframes shareConfirm {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-2px) scale(1.08);
+  }
+
+  100% {
     transform: translateY(0) scale(1);
   }
 }
@@ -2094,6 +2274,20 @@ h1::after {
     font-size: 0.78rem;
   }
 
+  .share-button {
+    width: 34px;
+    height: 34px;
+  }
+
+  .share-icon {
+    width: 21px;
+    height: 17px;
+  }
+
+  .share-icon span {
+    width: 6px;
+  }
+
   .message-kicker {
     gap: 6px;
     font-size: 0.82rem;
@@ -2187,6 +2381,11 @@ h1::after {
     min-height: 24px;
     padding: 3px 8px;
     font-size: 0.72rem;
+  }
+
+  .share-button {
+    width: 32px;
+    height: 32px;
   }
 
 }
